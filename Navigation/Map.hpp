@@ -87,7 +87,8 @@ class Map {
         int endIndex;
         int oneDLength; // *STARTS FROM ONE* one dimensonal array length (number of squares in occupancyGrid)
         int twoDLength; // *STARTS FROM ONE* two dimensonal length (just length or width since its a square map)
-     // Creates empty node on top of
+    
+        // Creates empty node on top of
         void emptyLink(); // links node to surrounding node (call after emptyInitialize
         int twoToOneD(int row, int collum);
         void initialize(vector<mapObject> vec);
@@ -108,6 +109,7 @@ class Map {
         void setFinishIndex(int finish);
         int getFinishIndex();
         void setNodeObject(mapObject mObj);
+        mapObject getMapObject(int index);
     
         // functions for testing
         void printMap();

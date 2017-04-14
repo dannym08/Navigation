@@ -179,6 +179,10 @@ int Map::getFinishIndex() {
     return endIndex;
 }
 
+mapObject Map::getMapObject(int index) {
+    return (map[index]->headPtr->item);
+}
+
 
 /////////////////////
 /* Test Functions */
