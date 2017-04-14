@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3075A78D1EA180A6006FD645 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3075A78B1EA180A6006FD645 /* Path.cpp */; };
 		30A82A461E9DA35600396C82 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30A82A451E9DA35600396C82 /* main.cpp */; };
 		30A82A4E1E9DA38700396C82 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30A82A4C1E9DA38700396C82 /* Map.cpp */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3075A78B1EA180A6006FD645 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
+		3075A78C1EA180A6006FD645 /* Path.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Path.hpp; sourceTree = "<group>"; };
 		30A82A421E9DA35600396C82 /* Navigation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Navigation; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A82A451E9DA35600396C82 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		30A82A4C1E9DA38700396C82 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 				30A82A4C1E9DA38700396C82 /* Map.cpp */,
 				30A82A4D1E9DA38700396C82 /* Map.hpp */,
 				30A82A521E9DA4B700396C82 /* GlobalConstants.hpp */,
+				3075A78B1EA180A6006FD645 /* Path.cpp */,
+				3075A78C1EA180A6006FD645 /* Path.hpp */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3075A78D1EA180A6006FD645 /* Path.cpp in Sources */,
 				30A82A4E1E9DA38700396C82 /* Map.cpp in Sources */,
 				30A82A461E9DA35600396C82 /* main.cpp in Sources */,
 			);
@@ -254,6 +260,7 @@
 				30A82A4B1E9DA35600396C82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
