@@ -47,12 +47,20 @@ void Map::oneToTwoD(int a, int& row, int& collum) {
 // assumes oneDLength and twoDLength is set
 // assumes length is above 9
 // top left corner case
-void Map::emptyInitialize() {
+void Map::initialize(vector<mapObject> vec) {
     Node* n;
     LinkedList* linked;
+    mapObject m = unknown;
+        
     for (int i = 0; i < oneDLength; i++) {
-        n = new Node();
+        
+        if (vec.size() > 0)
+            m = vec[i];
+        
+        n = new Node(m);
+        n->setIndex(i);
         linked = new LinkedList();
+        linked->add(n);
         map.push_back(linked);
     }
 }
@@ -134,9 +142,43 @@ void Map::emptyLink() {
 Map::Map(int oLength, int tLength) {
     oneDLength = oLength;
     twoDLength = tLength;
-    emptyInitialize();
+    vector<mapObject> vec;
+    initialize(vec);
     emptyLink();
 }
+
+void Map::updateMap(int occupancyGrid[]) {
+    
+    for (int i = 0; i < oneDLength; i++) {
+        if (occupancyGrid[i] == -1)
+            map[i]->headPtr->item = unknown;
+        else if (occupancyGrid[i] < 50)
+             map[i]->headPtr->item = space;
+        else if (occupancyGrid[i] >= 50)
+             map[i]->headPtr->item = wall;
+        else
+            map[i]->headPtr->item = error;
+    }
+}
+
+void Map::setCurrentIndex(int current) {
+    currentIndex = current;
+    map[currentIndex]->headPtr->item = currentPosition;
+}
+
+int Map::getCurrentIndex() {
+    return currentPosition;
+}
+
+void Map::setFinishIndex(int finish) {
+    endIndex = finish;
+    map[endIndex]->headPtr->item = endPosition;
+}
+
+int Map::getFinishIndex() {
+    return endIndex;
+}
+
 
 /////////////////////
 /* Test Functions */
@@ -148,7 +190,7 @@ void Map::printLinkedList() {
         n = map[i]->headPtr;
         cout << "Index " << i << ": ";
         while (n != nullptr) {
-            cout << " " << n->index  << " ";
+            cout << " " << n->index  << "(" << n->item << ")" << " ";
             n = n->next;
         }
         cout << endl;

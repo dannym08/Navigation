@@ -11,8 +11,21 @@
 
 using namespace std;
 
+const int oneDLength = 16;
+const int twoDLength = 4;
+
 int main(int argc, const char * argv[]) {
-    Map map(16, 4);
+    int occupancyGrid[oneDLength];
+    
+    for (int i = 0; i < oneDLength; i++){
+        occupancyGrid[i] = 100;
+    }
+    Map map(oneDLength, twoDLength);
+    map.updateMap(occupancyGrid);
+    map.setCurrentIndex(2);
+    map.setFinishIndex(14);
+    
     map.printLinkedList();
+    
     return 0;
 }

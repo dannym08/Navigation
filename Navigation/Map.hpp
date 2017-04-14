@@ -45,7 +45,7 @@ struct Node {
     int getIndex() {
         return index;
     }
-    //write deconstructor
+    //write deconstructor?
 };
 
 struct LinkedList {
@@ -54,6 +54,7 @@ struct LinkedList {
     LinkedList() {
         headPtr = nullptr;
     }
+    
     
     // adds to the second place in the linked list since header has the map object info
     void add(Node* n) {
@@ -69,36 +70,44 @@ struct LinkedList {
         }
 
     }
-    //write deconstructor
+    ~LinkedList() {
+        while (headPtr != nullptr) {
+            Node* temp = headPtr;
+            headPtr = headPtr->next;
+            delete temp;
+            temp = nullptr;
+        }
+    }
 };
 
 class Map {
     private:
         vector<LinkedList*> map;
-        int startIndex;
+        int currentIndex;
         int endIndex;
         int oneDLength; // *STARTS FROM ONE* one dimensonal array length (number of squares in occupancyGrid)
         int twoDLength; // *STARTS FROM ONE* two dimensonal length (just length or width since its a square map)
-        void emptyInitialize(); // Creates empty node on top of
+     // Creates empty node on top of
         void emptyLink(); // links node to surrounding node (call after emptyInitialize
         int twoToOneD(int row, int collum);
+        void initialize(vector<mapObject> vec);
         void oneToTwoD(int a, int& row, int &collum); // will return values in x and y
         //Node* getLastNode(int linkedListIndex);
+    
     public:
         // Map();
         Map(int oLength, int tLength); // 1D and 2D length
-        Map(int occupancyGrid, int oLength, int tLength);
+        //Map(int oLength, int tLength, int occupancyGrid);
         //~Map();
-        void updateMap(int occupancyGird);
+        void updateMap(int occupancyGird[]);
     
     
         // set and get functions
-        void setStart(int start);
-        int getStaart();
-        void setFinish(int finish);
-        int getFinish();
+        void setCurrentIndex(int start);
+        int getCurrentIndex();
+        void setFinishIndex(int finish);
+        int getFinishIndex();
         void setNodeObject(mapObject mObj);
-        mapObject getNodeObject();
     
         // functions for testing
         void printMap();
