@@ -7,6 +7,7 @@
 //
 
 #include "Map.hpp"
+//#include "GlobalConstants.hpp"
 #include <iostream>
 
 using std::endl;
@@ -161,6 +162,42 @@ void Map::updateMap(int occupancyGrid[]) {
     }
 }
 
+vector<int> Map::getAdjPaths(int index) {
+    vector<int> vec;
+    Node* node = map[index]->headPtr;
+    
+    if (node == nullptr){
+        return vec;
+    }
+    
+    node = node->next;
+    
+    while (node!= nullptr) {
+        vec.push_back(node->index);
+        node = node -> next;
+    }
+    
+    return vec;
+}
+
+// erase & set adj path
+void Map::eraseAdjPaths(int index, vector<int> vec) {
+    map[index]->clear();
+    
+//    Node* n = map[index]->headPtr;
+//    std::cout << "Test" << std::endl;
+//    while (n != nullptr){
+//        std::cout << "1" << std::endl;
+//    }
+    
+    Node* temp;
+    for (int i = 0; i < vec.size(); i++) {
+        temp = new Node(vec[i]);
+        temp->next = nullptr;
+        map[index]->add(temp);
+    }
+}
+
 void Map::setCurrentIndex(int current) {
     currentIndex = current;
     map[currentIndex]->headPtr->item = currentPosition;
@@ -179,6 +216,22 @@ int Map::getFinishIndex() {
     return endIndex;
 }
 
+int Map::getOneDLength() {
+    return oneDLength;
+}
+
+void Map::setOneDLength(int one){
+    oneDLength = one;
+}
+
+int Map::getTwoDLength() {
+    return twoDLength;
+}
+
+void Map::setTwoDLength(int two) {
+    twoDLength = two;
+}
+
 mapObject Map::getMapObject(int index) {
     return (map[index]->headPtr->item);
 }
@@ -188,13 +241,15 @@ mapObject Map::getMapObject(int index) {
 /* Test Functions */
 /////////////////////
 
+
+
 void Map::printLinkedList() {
     Node* n;
     for (int i = 0; i < oneDLength; i++) {
         n = map[i]->headPtr;
         cout << "Index " << i << ": ";
         while (n != nullptr) {
-            cout << " " << n->index  << "(" << n->item << ")" << " ";
+            cout << " " << n->index  << "(" << n->item << ")" << " "; // prints out index and and mapObject
             n = n->next;
         }
         cout << endl;

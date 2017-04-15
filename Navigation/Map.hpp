@@ -70,6 +70,17 @@ struct LinkedList {
         }
 
     }
+    //clears all BUT headPtr since headPtr stores mapObject indo
+    // BUGGED
+    void clear() {
+        Node* node = headPtr;
+        if (headPtr == nullptr)
+            return;
+        
+        node->next = nullptr;
+
+    }
+    
     ~LinkedList() {
         while (headPtr != nullptr) {
             Node* temp = headPtr;
@@ -101,7 +112,8 @@ class Map {
         //Map(int oLength, int tLength, int occupancyGrid);
         //~Map();
         void updateMap(int occupancyGird[]);
-    
+        vector<int> getAdjPaths(int index);
+        void eraseAdjPaths(int index, vector<int>);
     
         // set and get functions
         void setCurrentIndex(int start);
@@ -109,6 +121,10 @@ class Map {
         void setFinishIndex(int finish);
         int getFinishIndex();
         void setNodeObject(mapObject mObj);
+        int getOneDLength();
+        void setOneDLength(int one);
+        int getTwoDLength();
+        void setTwoDLength(int two);
         mapObject getMapObject(int index);
     
         // functions for testing

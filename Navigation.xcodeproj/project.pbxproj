@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3075A78D1EA180A6006FD645 /* Path.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3075A78B1EA180A6006FD645 /* Path.cpp */; };
+		3075A7901EA18622006FD645 /* PathFinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3075A78E1EA18622006FD645 /* PathFinding.cpp */; };
 		30A82A461E9DA35600396C82 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30A82A451E9DA35600396C82 /* main.cpp */; };
 		30A82A4E1E9DA38700396C82 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30A82A4C1E9DA38700396C82 /* Map.cpp */; };
 /* End PBXBuildFile section */
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		3075A78B1EA180A6006FD645 /* Path.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Path.cpp; sourceTree = "<group>"; };
 		3075A78C1EA180A6006FD645 /* Path.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Path.hpp; sourceTree = "<group>"; };
+		3075A78E1EA18622006FD645 /* PathFinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PathFinding.cpp; sourceTree = "<group>"; };
+		3075A78F1EA18622006FD645 /* PathFinding.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PathFinding.hpp; sourceTree = "<group>"; };
 		30A82A421E9DA35600396C82 /* Navigation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Navigation; sourceTree = BUILT_PRODUCTS_DIR; };
 		30A82A451E9DA35600396C82 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		30A82A4C1E9DA38700396C82 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
@@ -70,6 +73,8 @@
 				30A82A521E9DA4B700396C82 /* GlobalConstants.hpp */,
 				3075A78B1EA180A6006FD645 /* Path.cpp */,
 				3075A78C1EA180A6006FD645 /* Path.hpp */,
+				3075A78E1EA18622006FD645 /* PathFinding.cpp */,
+				3075A78F1EA18622006FD645 /* PathFinding.hpp */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3075A7901EA18622006FD645 /* PathFinding.cpp in Sources */,
 				3075A78D1EA180A6006FD645 /* Path.cpp in Sources */,
 				30A82A4E1E9DA38700396C82 /* Map.cpp in Sources */,
 				30A82A461E9DA35600396C82 /* main.cpp in Sources */,
