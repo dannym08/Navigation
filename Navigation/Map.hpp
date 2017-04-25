@@ -58,7 +58,7 @@ struct LinkedList {
     
     // adds to the second place in the linked list since header has the map object info
     void add(Node* n) {
-        Node* head = headPtr; //PROBLEM HERE
+        Node* head = headPtr;
         if (headPtr == nullptr) {
             headPtr = n;
         } else if (head->next == nullptr) {
@@ -70,6 +70,7 @@ struct LinkedList {
         }
 
     }
+    
     //clears all BUT headPtr since headPtr stores mapObject indo
     // BUGGED
     void clear() {

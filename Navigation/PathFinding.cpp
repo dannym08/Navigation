@@ -59,7 +59,7 @@ PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resoluti
 }
 
 // reorder map based of end index
-// *!CURRENTLY BUGGED!*
+// *!CURRENTLY BUGGED!* 
 void PathFinding::reorder() {
     vector<int> temp;
     int len = map->getOneDLength();

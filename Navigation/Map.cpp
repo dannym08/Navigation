@@ -242,7 +242,7 @@ mapObject Map::getMapObject(int index) {
 /////////////////////
 
 
-
+// The first one printed is the space with (object) the following are the possilble places you can move from the first one
 void Map::printLinkedList() {
     Node* n;
     for (int i = 0; i < oneDLength; i++) {

@@ -16,8 +16,8 @@
 
 using namespace std;
 
-const int oneDLength = 16;
-const int twoDLength = 4;
+const int oneDLength = 25;
+const int twoDLength = 5;
 const int resolution = 1;
 
 int main(int argc, const char * argv[]) {
@@ -54,7 +54,7 @@ int main(int argc, const char * argv[]) {
     pf.printLinkedList();
     
     cout << endl << "---------------------" << endl;
-    //pf.updateEnd(0);
-    //pf.printLinkedList();
+    pf.updateEnd(2);
+    pf.printLinkedList();
     return 0;
 }
