@@ -9,8 +9,9 @@
 #include "PathFinding.hpp"
 #include <cmath>
 
-
+///////////////////////
 /* PRIVATE FUNCTIONS */
+///////////////////////
 
 void PathFinding::reorderHelper(vector<int> &vec) {
     //int highest;
@@ -59,7 +60,7 @@ PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resoluti
 }
 
 // reorder map based of end index
-// *!CURRENTLY BUGGED!* 
+// endIndex must be set before calling reorder
 void PathFinding::reorder() {
     vector<int> temp;
     int len = map->getOneDLength();
@@ -80,7 +81,11 @@ void PathFinding::updateEnd(int index) {
     reorder();
 }
 
-bool findPath() {
+bool PathFinding::findPath() {
     
     return true;
+}
+
+bool PathFinding::isSolution(){
+    return solutionFound;
 }

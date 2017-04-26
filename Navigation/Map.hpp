@@ -129,7 +129,7 @@ class Map {
         mapObject getMapObject(int index);
     
         // functions for testing
-        void printMap();
+        //void printMap();
         void printLinkedList();
     
     

@@ -246,11 +246,15 @@ mapObject Map::getMapObject(int index) {
 void Map::printLinkedList() {
     Node* n;
     for (int i = 0; i < oneDLength; i++) {
+        int count = 0;
         n = map[i]->headPtr;
         cout << "Index " << i << ": ";
         while (n != nullptr) {
+            if (count > 0)
+                cout << "->";
             cout << " " << n->index  << "(" << n->item << ")" << " "; // prints out index and and mapObject
             n = n->next;
+            count++;
         }
         cout << endl;
     }
