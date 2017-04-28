@@ -14,18 +14,21 @@
 #include <ctime>
 #include <stdlib.h>
 
+
 using namespace std;
 
-const int oneDLength = 25;
-const int twoDLength = 5;
+const int oneDLength = 100;
+const int twoDLength = 10;
 const int resolution = 1;
 
 int main(int argc, const char * argv[]) {
-//    srand((uint)time(NULL));
+    srand((uint)time(NULL));
     int occupancyGrid[oneDLength];
    
     for (int i = 0; i < oneDLength; i++){
-        occupancyGrid[i] = 100;
+        int r = rand() % 100;
+        //cout << i << " : " << r << endl;
+        occupancyGrid[i] = r;
     }
 //    
 //    Map map(oneDLength, twoDLength);
@@ -51,10 +54,11 @@ int main(int argc, const char * argv[]) {
     
     PathFinding pf(occupancyGrid, oneDLength, twoDLength, resolution);
     
-    pf.printLinkedList();
-    
-    cout << endl << "---------------------" << endl;
-    pf.updateEnd(2);
-    pf.printLinkedList();
+//    pf.printLinkedList();
+//    
+//    cout << endl << "---------------------" << endl;
+      pf.updateEnd(2);
+//    pf.printLinkedList();
+      pf.printMap();
     return 0;
 }

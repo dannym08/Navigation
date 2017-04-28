@@ -9,6 +9,5 @@
 #ifndef globalConstants_hpp
 #define globalConstants_hpp
 
-enum mapObject {unknown = -1, space = 1, wall = 2, currentPosition = 3, endPosition = 4, error = 5}; // 0 is reserved for unitilized arrays
-
+enum mapObject {unknown = -1, space = 0, wall = 1, currentPosition = 2, endPosition = 3, error = 4};
 #endif /* globalConstants_hpp */

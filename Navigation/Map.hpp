@@ -10,6 +10,7 @@
 #define Map_hpp
 
 #include "GlobalConstants.hpp"
+
 #include <vector>
 #include <iostream>
 
@@ -129,7 +130,7 @@ class Map {
         mapObject getMapObject(int index);
     
         // functions for testing
-        //void printMap();
+        void printMap();
         void printLinkedList();
     
     

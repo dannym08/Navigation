@@ -72,10 +72,6 @@ void PathFinding::reorder() {
     }
 }
 
-void PathFinding::printLinkedList() {
-    map->printLinkedList();
-}
-
 void PathFinding::updateEnd(int index) {
     map->setFinishIndex(index);
     reorder();
@@ -89,3 +85,16 @@ bool PathFinding::findPath() {
 bool PathFinding::isSolution(){
     return solutionFound;
 }
+
+/////////////////
+//Test Funciton//
+/////////////////
+
+void PathFinding::printLinkedList() {
+    map->printLinkedList();
+}
+
+void PathFinding::printMap() {
+    map->printMap();
+}
+

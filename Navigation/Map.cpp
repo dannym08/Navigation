@@ -9,6 +9,7 @@
 #include "Map.hpp"
 //#include "GlobalConstants.hpp"
 #include <iostream>
+#include <iomanip>
 
 using std::endl;
 using std::cout;
@@ -258,4 +259,22 @@ void Map::printLinkedList() {
         }
         cout << endl;
     }
+}
+
+void Map::printMap() {
+    cout << "Printing out map index(object)" << endl;
+    cout << "------------------------------" << endl;
+    for (int i = 0; i < twoDLength; i++) {
+        cout << endl;
+        for (int x = 0; x < twoDLength; x++) {
+            int index = (i * twoDLength) + x;
+            
+            if (x == 0)
+                cout << std::setw(3) << index << "(" << map[index]->headPtr->item << ")"; // setw is on index only
+            else
+                cout << std::setw(6) << index << "(" << map[index]->headPtr->item << ")";// setw is on index only
+;
+        }
+    }
+    cout << endl;
 }

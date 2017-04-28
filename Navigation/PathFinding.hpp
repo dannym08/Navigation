@@ -32,6 +32,7 @@ class PathFinding {
     
         //TEST FUNCTIONS
         void printLinkedList();
+        void printMap();
     
 };
 
