@@ -20,6 +20,7 @@ class PathFinding {
         float resolution; // the size of each cell within the map (in meters)
         bool solutionFound;
         void reorderHelper(vector<int> &vec); // reorder linked list based off distance to end
+        vector<bool> visited;
     public:
         //PathFinding();
         //PathFinding(int occupancayGrid);
@@ -29,6 +30,12 @@ class PathFinding {
         void setPathOnMap();
         void reorder(); // change links based off distance for shorest distance (end index must be set)
         bool isSolution();
+        void clearVisited();
+    
+        void setOneDLength(int oneD);
+        void setTwoDLength(int twoD);
+        int getOneDLength();
+        int getTwoDLength();
     
         //TEST FUNCTIONS
         void printLinkedList();

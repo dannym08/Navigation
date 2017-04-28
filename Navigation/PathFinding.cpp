@@ -57,6 +57,11 @@ PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resoluti
     map->updateMap(occupancyGrid);
     this->resolution = resolution;
     solutionFound = false;
+    
+    for (int i = 0; i < oneL; i++) {
+        visited.push_back(false);
+    }
+
 }
 
 // reorder map based of end index
@@ -84,6 +89,33 @@ bool PathFinding::findPath() {
 
 bool PathFinding::isSolution(){
     return solutionFound;
+}
+
+void PathFinding::clearVisited() {
+    int oneL = getOneDLength();
+    
+    if (visited.size() != oneL)
+        visited.resize(oneL);
+    
+    for (int i = 0; i < oneL; i++){
+        visited[i] = false;
+    }
+}
+
+void PathFinding::setOneDLength(int oneD) {
+    map->setOneDLength(oneD);
+}
+
+void PathFinding::setTwoDLength(int twoD) {
+    map->setTwoDLength(twoD);
+}
+
+int PathFinding::getOneDLength() {
+    return map->getOneDLength();
+}
+
+int PathFinding::getTwoDLength() {
+    return map->getTwoDLength();
 }
 
 /////////////////

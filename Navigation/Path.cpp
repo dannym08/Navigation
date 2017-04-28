@@ -21,12 +21,12 @@ void Path::push(int newEntry) {
     itemCount++;
 }
 
-void Path::popTop() {
+void Path::pop() {
     path.pop_back();
     itemCount--;
 }
 
-int Path::peekTop() {
+int Path::peek() {
     return path[itemCount-1];
 }
 

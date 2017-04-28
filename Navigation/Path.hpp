@@ -24,8 +24,8 @@ public:
     
         bool isEmpty();
         void push(int newEntry); // adds to end
-        void popTop(); // takes off top
-        int peekTop(); // looks at the last item
+        void pop(); // takes off top
+        int peek(); // looks at the last item
     
         vector<int> getPath(); // use this to get path once path complete
     
