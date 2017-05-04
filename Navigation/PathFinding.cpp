@@ -17,7 +17,7 @@ void PathFinding::reorderHelper(vector<int> &vec) {
     //int highest;
     int index;
     int dis;
-    int endIndex = map->getFinishIndex();
+    int endIndex = map->getEndIndex();
     vector<int> distancesFromEnd;
     
     for (int i = 0; i < vec.size(); i++) { // initialize end distance
@@ -49,6 +49,8 @@ void PathFinding::reorderHelper(vector<int> &vec) {
     
 }
 
+
+
 /* PUBLIC FUNCTIONS */
 
 // 
@@ -77,14 +79,17 @@ void PathFinding::reorder() {
     }
 }
 
-void PathFinding::updateEnd(int index) {
-    map->setFinishIndex(index);
+void PathFinding::setEnd(int index) {
+    map->setEndIndex(index);
     reorder();
 }
 
+/*
+    Make sure current and end index are both set
+ */
 bool PathFinding::findPath() {
     
-    return true;
+      return true; // place holder
 }
 
 bool PathFinding::isSolution(){
@@ -100,6 +105,10 @@ void PathFinding::clearVisited() {
     for (int i = 0; i < oneL; i++){
         visited[i] = false;
     }
+}
+
+void PathFinding::updateMap(int occupancyGird[]){
+    map->updateMap(occupancyGird);
 }
 
 void PathFinding::setOneDLength(int oneD) {
@@ -128,5 +137,9 @@ void PathFinding::printLinkedList() {
 
 void PathFinding::printMap() {
     map->printMap();
+}
+
+vector<int> PathFinding::getPath() {
+    return path.getPath();
 }
 

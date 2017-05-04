@@ -208,12 +208,12 @@ int Map::getCurrentIndex() {
     return currentPosition;
 }
 
-void Map::setFinishIndex(int finish) {
+void Map::setEndIndex(int finish) {
     endIndex = finish;
     map[endIndex]->headPtr->item = endPosition;
 }
 
-int Map::getFinishIndex() {
+int Map::getEndIndex() {
     return endIndex;
 }
 

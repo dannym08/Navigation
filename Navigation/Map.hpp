@@ -120,14 +120,15 @@ class Map {
         // set and get functions
         void setCurrentIndex(int start);
         int getCurrentIndex();
-        void setFinishIndex(int finish);
-        int getFinishIndex();
-        void setNodeObject(mapObject mObj);
+        void setEndIndex(int finish);
+        int getEndIndex();
+        void setMapObject(mapObject mObj);
+        mapObject getMapObject(int index);
         int getOneDLength();
         void setOneDLength(int one);
         int getTwoDLength();
         void setTwoDLength(int two);
-        mapObject getMapObject(int index);
+    
     
         // functions for testing
         void printMap();

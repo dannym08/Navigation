@@ -17,17 +17,18 @@
 
 using namespace std;
 
-const int oneDLength = 100;
-const int twoDLength = 10;
+const int oneDLength = 9;
+const int twoDLength = 3;
 const int resolution = 1;
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char* argv[]) {
     srand((uint)time(NULL));
     int occupancyGrid[oneDLength];
    
     for (int i = 0; i < oneDLength; i++){
-        int r = rand() % 100;
-        //cout << i << " : " << r << endl;
+//        int r = rand() % 100;
+//        //cout << i << " : " << r << endl;
+        int r = 0;
         occupancyGrid[i] = r;
     }
 //    
@@ -57,8 +58,16 @@ int main(int argc, const char * argv[]) {
 //    pf.printLinkedList();
 //    
 //    cout << endl << "---------------------" << endl;
-      pf.updateEnd(2);
-//    pf.printLinkedList();
-      pf.printMap();
+    pf.setEnd(3);
+//      pf.printLinkedList();
+    pf.printMap();
+    //pf.findPath();
+    
+//    vector<int> path = pf.getPath();
+//    cout << "Size: " << path.size() << endl;
+//    for (int i = 0; i < path.size(); i++) {
+//        cout << path[i] << endl;
+//    }
+    
     return 0;
 }
