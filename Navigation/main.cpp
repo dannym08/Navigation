@@ -32,7 +32,9 @@ int main(int argc, const char* argv[]) {
         
         occupancyGrid[i] = r;
     }
+    //occupancyGrid[1] = 100;
     occupancyGrid[5] = 100;
+    //occupancyGrid[6] = 100;
 //    
 //    Map map(oneDLength, twoDLength);
 //    map.updateMap(occupancyGrid);

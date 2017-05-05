@@ -104,6 +104,9 @@ bool PathFinding::findPath() {
     
     path.push(currentIndex);
     
+    if (path.isEmpty())
+        outOfOptions = true;
+    
     while (!pathFound && !outOfOptions) {
     
         if (currentIndex == map->getEndIndex()) {
@@ -120,8 +123,7 @@ bool PathFinding::findPath() {
             tempLoc = adjList[count];
             tempObj = map->getMapObject(tempLoc);
             
-//            cout << "TempLoc: " << tempLoc << endl;
-//            cout << "Object " << tempObj << endl;
+          
             
             if (tempObj == wall)
                 visited[tempLoc] = true; // sets wall to true to avoid it
