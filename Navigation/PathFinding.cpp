@@ -8,6 +8,10 @@
 
 #include "PathFinding.hpp"
 #include <cmath>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 ///////////////////////
 /* PRIVATE FUNCTIONS */
@@ -49,14 +53,12 @@ void PathFinding::reorderHelper(vector<int> &vec) {
     
 }
 
-
-
 /* PUBLIC FUNCTIONS */
 
 // 
 PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resolution){
     map = new Map(oneL, twoL);
-    map->updateMap(occupancyGrid);
+    updateMap(occupancyGrid);
     this->resolution = resolution;
     solutionFound = false;
     
@@ -84,12 +86,78 @@ void PathFinding::setEnd(int index) {
     reorder();
 }
 
+void PathFinding::setCurrentIndex(int index){
+    map->setCurrentIndex(index);
+}
+
 /*
     Make sure current and end index are both set
  */
 bool PathFinding::findPath() {
+    bool pathFound = false; // if path is found or not
+    bool next;
+    bool outOfOptions = false; // when path is empty and we pop
+    int currentIndex = map->getCurrentIndex();
+    int count, vecSize, tempLoc = 0;
+    mapObject tempObj;
+    vector<int> adjList;
     
-      return true; // place holder
+    path.push(currentIndex);
+    
+    while (!pathFound && !outOfOptions) {
+    
+        if (currentIndex == map->getEndIndex()) {
+            pathFound = true;
+            return pathFound;
+        }
+            
+        count = 0; // starts at 0, 0 is your next cloestest index
+        adjList = map->getAdjPaths(currentIndex);
+        vecSize = (int)adjList.size();
+        next = false;
+    
+        while (count <= vecSize && !next) { // finds next index if there is one
+            tempLoc = adjList[count];
+            tempObj = map->getMapObject(tempLoc);
+            
+//            cout << "TempLoc: " << tempLoc << endl;
+//            cout << "Object " << tempObj << endl;
+            
+            if (tempObj == wall)
+                visited[tempLoc] = true; // sets wall to true to avoid it
+            else if (tempObj == space && !visited[tempLoc]) {
+                next = true;
+                visited[tempLoc] = true;
+                path.push(tempLoc);
+            }
+            else if (tempObj == unknown && !visited[tempLoc]){
+                next = true;
+                visited[tempLoc] = true;
+                path.push(tempLoc);
+            }
+            else if (tempObj == endPosition) {
+                next = true;
+                pathFound = true;
+                path.push(tempLoc);
+                visited[tempLoc] = true;
+            }
+            
+            count++;
+        }
+        
+        if (next) {
+            currentIndex = tempLoc;
+        } else {
+            if (!path.isEmpty()) { // if path is not empty
+                path.pop();
+                currentIndex = path.peek();
+            } else {
+                outOfOptions = true;
+            }
+        }
+    
+    }
+    return pathFound;
 }
 
 bool PathFinding::isSolution(){

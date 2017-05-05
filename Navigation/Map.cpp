@@ -205,7 +205,7 @@ void Map::setCurrentIndex(int current) {
 }
 
 int Map::getCurrentIndex() {
-    return currentPosition;
+    return currentIndex;
 }
 
 void Map::setEndIndex(int finish) {

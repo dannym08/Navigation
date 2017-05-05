@@ -20,7 +20,6 @@ class PathFinding {
         float resolution; // the size of each cell within the map (in meters)
         bool solutionFound;
         void reorderHelper(vector<int> &vec); // reorder linked list based off distance to end
-        void findPathHelper(int currIndex);
         vector<bool> visited;
     public:
         //PathFinding();
@@ -36,6 +35,7 @@ class PathFinding {
         void setOneDLength(int oneD);
         int getOneDLength();
         void setEnd(int index); // called by UI node
+        void setCurrentIndex(int index);
         void setTwoDLength(int twoD);
         int getTwoDLength();
     
