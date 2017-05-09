@@ -9,5 +9,7 @@
 #ifndef globalConstants_hpp
 #define globalConstants_hpp
 
-enum mapObject {unknown = -1, space = 0, wall = 1, currentPosition = 2, endPosition = 3, error = 4};
+enum mapObject {unknown = -1, space = 0, wall = 1, currentPosition = 2, endPosition = 3, pathObj = 4, error = 9};
+
+const int wallCutoff = 50;
 #endif /* globalConstants_hpp */

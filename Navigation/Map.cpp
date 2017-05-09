@@ -18,20 +18,6 @@ using std::cout;
 /* PRIVATE FUNCTIONS*/
 //////////////////////
 
-// assumes oneDLength and twoDLength is set
-// row and collum start at 0
-int Map::twoToOneD(int row, int collum) {
-    int a = (row * twoDLength) + collum;
-    return a;
-}
-
-// assumes oneDLength and twoDLength is set
-// row and collum start at zero
-void Map::oneToTwoD(int a, int& row, int& collum) {
-    row = a / twoDLength; //sets row number
-    collum = a % twoDLength; //sets collum number
-}
-
 //Node* Map::getLastNode(int linkedListIndex) {
 //    Node* n = map[linkedListIndex]->headPtr;
 //    
@@ -46,9 +32,9 @@ void Map::oneToTwoD(int a, int& row, int& collum) {
 //    return n;
 //}
 
-// assumes oneDLength and twoDLength is set
+// assumes oneDLength is set
 // assumes length is above 9
-// top left corner case
+// Function creates oneDLength ammount of linked lists all with one node in it being the first node (node on the map)
 void Map::initialize(vector<mapObject> vec) {
     Node* n;
     LinkedList* linked;
@@ -56,14 +42,14 @@ void Map::initialize(vector<mapObject> vec) {
         
     for (int i = 0; i < oneDLength; i++) {
         
-        if (vec.size() > 0)
+        if (vec.size() > 0) // if non empty vector is sent
             m = vec[i];
         
         n = new Node(m);
         n->setIndex(i);
         linked = new LinkedList();
         linked->add(n);
-        map.push_back(linked);
+        map.push_back(linked); // first index for each linked list
     }
 }
 
@@ -149,14 +135,15 @@ Map::Map(int oLength, int tLength) {
     emptyLink();
 }
 
+// wallCutoff is set in global constants (change that in that file)
 void Map::updateMap(int occupancyGrid[]) {
     
     for (int i = 0; i < oneDLength; i++) {
         if (occupancyGrid[i] == -1)
             map[i]->headPtr->item = unknown;
-        else if (occupancyGrid[i] < 50)
+        else if (occupancyGrid[i] < wallCutoff)
              map[i]->headPtr->item = space;
-        else if (occupancyGrid[i] >= 50)
+        else if (occupancyGrid[i] >= wallCutoff)
              map[i]->headPtr->item = wall;
         else
             map[i]->headPtr->item = error;
@@ -194,9 +181,23 @@ void Map::eraseAdjPaths(int index, vector<int> vec) {
     Node* temp;
     for (int i = 0; i < vec.size(); i++) {
         temp = new Node(vec[i]);
-        temp->next = nullptr;
+        //temp->next = nullptr;
         map[index]->add(temp);
     }
+}
+
+// assumes oneDLength and twoDLength is set
+// row and collum start at 0
+int Map::twoToOneD(int row, int collum) {
+    int a = (row * twoDLength) + collum;
+    return a;
+}
+
+// assumes oneDLength and twoDLength is set
+// row and collum start at zero
+void Map::oneToTwoD(int a, int& row, int& collum) {
+    row = a / twoDLength; //sets row number
+    collum = a % twoDLength; //sets collum number
 }
 
 void Map::setCurrentIndex(int current) {
@@ -231,6 +232,11 @@ int Map::getTwoDLength() {
 
 void Map::setTwoDLength(int two) {
     twoDLength = two;
+}
+
+void Map::setMapObject(mapObject mObj, int index) {
+    map[index]->headPtr->item = mObj;
+    
 }
 
 mapObject Map::getMapObject(int index) {
@@ -269,12 +275,24 @@ void Map::printMap() {
         for (int x = 0; x < twoDLength; x++) {
             int index = (i * twoDLength) + x;
             
-            if (x == 0)
-                cout << std::setw(3) << index << "(" << map[index]->headPtr->item << ")"; // setw is on index only
-            else
+//            if (x == 0)
+//                cout << std::setw(6) << index << "(" << map[index]->headPtr->item << ")"; // setw is on index only
+//            else
                 cout << std::setw(6) << index << "(" << map[index]->headPtr->item << ")";// setw is on index only
 ;
         }
     }
     cout << endl;
+}
+
+void Map::printIndex() {
+    cout << "Map Index" << endl;
+    cout << "------------------------------" << endl;
+    cout << "Unkown: " << unknown << endl;
+    cout << "Space: " << space << endl;
+    cout << "Wall: " << wall << endl;
+    cout << "Current/start position: " << currentPosition << endl;
+    cout << "End position: " << endPosition << endl;
+    cout << "Path: " << pathObj << endl;
+    cout << "------------------------------" << endl;
 }

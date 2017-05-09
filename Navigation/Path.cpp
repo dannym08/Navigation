@@ -7,6 +7,10 @@
 //
 
 #include "Path.hpp"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 Path::Path() {
     itemCount = 0;
@@ -27,7 +31,30 @@ void Path::pop() {
 }
 
 int Path::peek() {
-    return path[itemCount-1];
+    return path[itemCount];
+}
+
+void Path::resetPath() {
+    itemCount = 0;
+}
+
+//////////////////
+// TEST FUNCTION//
+//////////////////
+
+void Path::printPath() {
+    cout << "Printing path" << endl;
+    cout << "-------------" << endl;
+    cout << "Path size is: " << itemCount << endl;
+    
+    for (int i = 0; i < itemCount; i++){
+
+        cout << path[i];
+        
+        if (i != itemCount - 1)
+            cout << " -> ";
+    }
+    cout << endl;
 }
 
 vector<int> Path::getPath() {

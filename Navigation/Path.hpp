@@ -16,7 +16,7 @@ using std::vector;
 class Path{
     private:
         vector<int> path;
-        int itemCount;
+        int itemCount; // the last index
 public:
         Path();
     
@@ -26,6 +26,10 @@ public:
         void push(int newEntry); // adds to end
         void pop(); // takes off top
         int peek(); // looks at the last item
+        void resetPath();
+    
+        // test functions
+        void printPath();
     
         vector<int> getPath(); // use this to get path once path complete
     

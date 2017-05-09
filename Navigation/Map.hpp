@@ -39,6 +39,11 @@ struct Node {
         index = -1;
     }
     
+    ~Node() {
+        next = nullptr;
+        delete this;
+    }
+    
     void setIndex(int i){
         index = i;
     }
@@ -72,8 +77,7 @@ struct LinkedList {
 
     }
     
-    //clears all BUT headPtr since headPtr stores mapObject indo
-    // BUGGED
+    //clears all BUT headPtr since headPtr stores mapObject info
     void clear() {
         Node* node = headPtr;
         if (headPtr == nullptr)
@@ -103,9 +107,8 @@ class Map {
     
         // Creates empty node on top of
         void emptyLink(); // links node to surrounding node (call after emptyInitialize
-        int twoToOneD(int row, int collum);
         void initialize(vector<mapObject> vec);
-        void oneToTwoD(int a, int& row, int &collum); // will return values in x and y
+
         //Node* getLastNode(int linkedListIndex);
     
     public:
@@ -117,12 +120,15 @@ class Map {
         vector<int> getAdjPaths(int index);
         void eraseAdjPaths(int index, vector<int>);
     
+        void oneToTwoD(int a, int& row, int &collum); // will return values in x and y
+        int twoToOneD(int row, int collum);
+    
         // set and get functions
         void setCurrentIndex(int start);
         int getCurrentIndex();
         void setEndIndex(int finish);
         int getEndIndex();
-        void setMapObject(mapObject mObj);
+        void setMapObject(mapObject mObj, int index);
         mapObject getMapObject(int index);
         int getOneDLength();
         void setOneDLength(int one);
@@ -132,6 +138,7 @@ class Map {
     
         // functions for testing
         void printMap();
+        void printIndex();
         void printLinkedList();
     
     

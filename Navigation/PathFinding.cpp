@@ -8,8 +8,8 @@
 
 #include "PathFinding.hpp"
 #include <cmath>
-#include <iostream>
 
+#include <iostream>
 using std::cout;
 using std::endl;
 
@@ -53,9 +53,10 @@ void PathFinding::reorderHelper(vector<int> &vec) {
     
 }
 
+//////////////////////
 /* PUBLIC FUNCTIONS */
+//////////////////////
 
-// 
 PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resolution){
     map = new Map(oneL, twoL);
     updateMap(occupancyGrid);
@@ -79,15 +80,6 @@ void PathFinding::reorder() {
         reorderHelper(temp);
         map->eraseAdjPaths(i, temp);
     }
-}
-
-void PathFinding::setEnd(int index) {
-    map->setEndIndex(index);
-    reorder();
-}
-
-void PathFinding::setCurrentIndex(int index){
-    map->setCurrentIndex(index);
 }
 
 /*
@@ -123,8 +115,6 @@ bool PathFinding::findPath() {
             tempLoc = adjList[count];
             tempObj = map->getMapObject(tempLoc);
             
-          
-            
             if (tempObj == wall)
                 visited[tempLoc] = true; // sets wall to true to avoid it
             else if (tempObj == space && !visited[tempLoc]) {
@@ -159,7 +149,19 @@ bool PathFinding::findPath() {
         }
     
     }
+    solutionFound = pathFound;
     return pathFound;
+}
+
+// will ignore the first and last because those represent the start
+// and endpoints
+
+void PathFinding::setPathOnMap() {
+    vector<int> temp = path.getPath();
+    int size = (int)temp.size();
+    
+    for (int i = 1; i < (size - 1); i++)
+        map->setMapObject(pathObj, temp[i]);
 }
 
 bool PathFinding::isSolution(){
@@ -181,12 +183,60 @@ void PathFinding::updateMap(int occupancyGird[]){
     map->updateMap(occupancyGird);
 }
 
+
+vector<int> PathFinding::getPath() {
+    return path.getPath();
+}
+
+
+// calculates distance in meters from current point to goal
+double PathFinding::calcDistance() {
+    int x = map->getCurrentIndex();
+    int y = map->getEndIndex();
+    double temp1, temp2;
+    int x1, x2, y1, y2;
+    
+    map->oneToTwoD(x, x1, y1);
+    map->oneToTwoD(y, x2, y2);
+
+    x = abs(x1 - x2);
+    y = abs(y1 - y2);
+    
+    //cout << x << " " << y << endl;
+    
+    temp1 = x * resolution;
+    temp2 = y * resolution;
+    
+    //cout << temp1 << " " << temp2 << endl;
+    
+    temp1 = temp1 * temp1;
+    temp2 = temp2 * temp2;
+    
+    temp1 = temp1 + temp2;
+    temp2 = sqrt(temp1);
+    
+    return temp2;
+}
+
+//////////////////////////
+// SET FUNCTIONS ON MAP //
+//////////////////////////
+
 void PathFinding::setOneDLength(int oneD) {
     map->setOneDLength(oneD);
 }
 
 void PathFinding::setTwoDLength(int twoD) {
     map->setTwoDLength(twoD);
+}
+
+void PathFinding::setEnd(int index) {
+    map->setEndIndex(index);
+    reorder();
+}
+
+void PathFinding::setCurrentIndex(int index){
+    map->setCurrentIndex(index);
 }
 
 int PathFinding::getOneDLength() {
@@ -209,7 +259,11 @@ void PathFinding::printMap() {
     map->printMap();
 }
 
-vector<int> PathFinding::getPath() {
-    return path.getPath();
+void PathFinding::printIndex() {
+    map->printIndex();
+}
+
+void PathFinding::printPath() {
+    path.printPath();
 }
 
