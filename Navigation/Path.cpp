@@ -38,6 +38,10 @@ void Path::resetPath() {
     itemCount = 0;
 }
 
+int Path::getSize() {
+    return itemCount;
+}
+
 //////////////////
 // TEST FUNCTION//
 //////////////////

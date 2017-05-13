@@ -95,6 +95,7 @@ bool PathFinding::findPath() {
     vector<int> adjList;
     
     path.push(currentIndex);
+    visited[currentIndex] = true;
     
     if (path.isEmpty())
         outOfOptions = true;
@@ -111,7 +112,7 @@ bool PathFinding::findPath() {
         vecSize = (int)adjList.size();
         next = false;
     
-        while (count <= vecSize && !next) { // finds next index if there is one
+        while (count < vecSize && !next) { // finds next index if there is one
             tempLoc = adjList[count];
             tempObj = map->getMapObject(tempLoc);
             
@@ -133,15 +134,17 @@ bool PathFinding::findPath() {
                 path.push(tempLoc);
                 visited[tempLoc] = true;
             }
+            //cout << "Temp Loc " << tempLoc << " Path Size " << path.getSize() << endl;
             
             count++;
         }
-        
+        //cout << "I OUT OF LOOP" << endl;
         if (next) {
             currentIndex = tempLoc;
         } else {
             if (!path.isEmpty()) { // if path is not empty
                 path.pop();
+                //cout << "Called pop" << endl;
                 currentIndex = path.peek();
             } else {
                 outOfOptions = true;

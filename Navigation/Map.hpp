@@ -87,14 +87,14 @@ struct LinkedList {
 
     }
     
-    ~LinkedList() {
-        while (headPtr != nullptr) {
-            Node* temp = headPtr;
-            headPtr = headPtr->next;
-            delete temp;
-            temp = nullptr;
-        }
-    }
+//    ~LinkedList() {
+//        while (headPtr != nullptr) {
+//            Node* temp = headPtr;
+//            headPtr = headPtr->next;
+//            delete temp;
+//            temp = nullptr;
+//        }
+//    }
 };
 
 class Map {

@@ -27,6 +27,7 @@ public:
         void pop(); // takes off top
         int peek(); // looks at the last item
         void resetPath();
+        int getSize();
     
         // test functions
         void printPath();
