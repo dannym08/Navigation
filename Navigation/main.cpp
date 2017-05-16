@@ -40,7 +40,7 @@ int main(int argc, const char* argv[]) {
     pf.setEnd(222);
     pf.printIndex();
     pf.findPath();
-    //pf.setPathOnMap();
+    pf.setPathOnMap();
     pf.printMap();
     
     

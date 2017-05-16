@@ -31,7 +31,7 @@ void Path::pop() {
 }
 
 int Path::peek() {
-    return path[itemCount];
+    return path[itemCount - 1];
 }
 
 void Path::resetPath() {

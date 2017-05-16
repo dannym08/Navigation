@@ -83,34 +83,37 @@ void PathFinding::reorder() {
 }
 
 /*
-    Make sure current and end index are both set
+    -Make sure current and end index are both set
+    -The path knows its down once it tries to pop off the intial starting index
  */
 bool PathFinding::findPath() {
     bool pathFound = false; // if path is found or not
     bool next;
     bool outOfOptions = false; // when path is empty and we pop
+    int startIndex = 0;
     int currentIndex = map->getCurrentIndex();
     int count, vecSize, tempLoc = 0;
     mapObject tempObj;
     vector<int> adjList;
     
+    startIndex = currentIndex; // used for checking
     path.push(currentIndex);
-    visited[currentIndex] = true;
-    
-    if (path.isEmpty())
-        outOfOptions = true;
+    visited[currentIndex] = true;  
     
     while (!pathFound && !outOfOptions) {
-    
+        
         if (currentIndex == map->getEndIndex()) {
             pathFound = true;
             return pathFound;
         }
             
-        count = 0; // starts at 0, 0 is your next cloestest index
+        count = 0; 
         adjList = map->getAdjPaths(currentIndex);
         vecSize = (int)adjList.size();
         next = false;
+        
+        //cout << "Current Location: " << currentIndex << endl;
+
     
         while (count < vecSize && !next) { // finds next index if there is one
             tempLoc = adjList[count];
@@ -121,17 +124,17 @@ bool PathFinding::findPath() {
             else if (tempObj == space && !visited[tempLoc]) {
                 next = true;
                 visited[tempLoc] = true;
-                path.push(tempLoc);
+                //path.push(tempLoc);
             }
             else if (tempObj == unknown && !visited[tempLoc]){
                 next = true;
                 visited[tempLoc] = true;
-                path.push(tempLoc);
+                //path.push(tempLoc);
             }
             else if (tempObj == endPosition) {
                 next = true;
                 pathFound = true;
-                path.push(tempLoc);
+                //path.push(tempLoc);
                 visited[tempLoc] = true;
             }
             //cout << "Temp Loc " << tempLoc << " Path Size " << path.getSize() << endl;
@@ -141,14 +144,21 @@ bool PathFinding::findPath() {
         //cout << "I OUT OF LOOP" << endl;
         if (next) {
             currentIndex = tempLoc;
-        } else {
-            if (!path.isEmpty()) { // if path is not empty
+           // cout << "PUSHED: " << currentIndex << endl;
+            path.push(currentIndex);
+        } else { // no new options were found
+            if (path.peek() == startIndex){
+                path.pop(); // get starting index off of path
+                outOfOptions = true;
+            }
+            else { // if you have somthing to pop off, pop off
+                //cout << "POPPED: " << path.peek() << endl;
                 path.pop();
                 //cout << "Called pop" << endl;
                 currentIndex = path.peek();
-            } else {
-                outOfOptions = true;
+                //cout << "AFTER POP: " << currentIndex << endl;
             }
+          
         }
     
     }
