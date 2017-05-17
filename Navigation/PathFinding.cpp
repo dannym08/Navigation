@@ -184,9 +184,9 @@ bool PathFinding::isSolution(){
 void PathFinding::clearVisited() {
     int oneL = getOneDLength();
     
-    if (visited.size() != oneL)
-        visited.resize(oneL);
-    
+//    if (visited.size() != oneL)
+//        visited.resize(oneL);
+//    
     for (int i = 0; i < oneL; i++){
         visited[i] = false;
     }
@@ -202,7 +202,7 @@ vector<int> PathFinding::getPath() {
 }
 
 
-// calculates distance in meters from current point to goal
+// calculates distance in meters from current point to goal (diagonal distance, not distance of path)
 double PathFinding::calcDistance() {
     int x = map->getCurrentIndex();
     int y = map->getEndIndex();

@@ -37,10 +37,10 @@ int main(int argc, const char* argv[]) {
     PathFinding pf(occupancyGrid, oneDLength, twoDLength, resolution);
     
     pf.setCurrentIndex(6);
-    pf.setEnd(222);
+    pf.setEnd(210);
     pf.printIndex();
     pf.findPath();
-    pf.setPathOnMap();
+    //pf.setPathOnMap();
     pf.printMap();
     
     

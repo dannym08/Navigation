@@ -279,7 +279,6 @@ void Map::printMap() {
 //                cout << std::setw(6) << index << "(" << map[index]->headPtr->item << ")"; // setw is on index only
 //            else
                 cout << std::setw(6) << index << "(" << map[index]->headPtr->item << ")";// setw is on index only
-;
         }
     }
     cout << endl;
