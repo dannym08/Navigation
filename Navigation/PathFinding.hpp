@@ -32,7 +32,7 @@ class PathFinding {
         void clearVisited();
         void updateMap(int occupancyGird[]);
         vector<int> getPath();
-        double calcDistance(); // CHECK!! in meters 
+    double calcDistance(int x, int y); // in meters
     
         // set and get functions for the map
         void setOneDLength(int oneD);

@@ -8,8 +8,8 @@
 
 #include "PathFinding.hpp"
 #include <cmath>
-
 #include <iostream>
+
 using std::cout;
 using std::endl;
 
@@ -18,14 +18,12 @@ using std::endl;
 ///////////////////////
 
 void PathFinding::reorderHelper(vector<int> &vec) {
-    //int highest;
-    int index;
-    int dis;
+    int index, dis, temp;
     int endIndex = map->getEndIndex();
     vector<int> distancesFromEnd;
     
     for (int i = 0; i < vec.size(); i++) { // initialize end distance
-        dis = abs(vec[i] - endIndex);
+        dis = calcDistance(vec[i], endIndex);
         distancesFromEnd.push_back(dis);
     }
     
@@ -41,7 +39,7 @@ void PathFinding::reorderHelper(vector<int> &vec) {
         }
         
         if (index != i) { // swap both vectors
-            int temp = distancesFromEnd[i];
+            temp = distancesFromEnd[i];
             distancesFromEnd[i] = distancesFromEnd[index];
             distancesFromEnd[index] = temp;
             
@@ -69,8 +67,10 @@ PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resoluti
 
 }
 
-// reorder map based of end index
-// endIndex must be set before calling reorder
+/* 
+    Reorders map based of end index.
+    endIndex must be set before calling reorder.
+*/
 void PathFinding::reorder() {
     vector<int> temp;
     int len = map->getOneDLength();
@@ -83,8 +83,8 @@ void PathFinding::reorder() {
 }
 
 /*
-    -Make sure current and end index are both set
-    -The path knows its down once it tries to pop off the intial starting index
+    Make sure current and end index are both set.
+    The path knows its down once it tries to pop off the intial starting index.
  */
 bool PathFinding::findPath() {
     bool pathFound = false; // if path is found or not
@@ -203,9 +203,7 @@ vector<int> PathFinding::getPath() {
 
 
 // calculates distance in meters from current point to goal (diagonal distance, not distance of path)
-double PathFinding::calcDistance() {
-    int x = map->getCurrentIndex();
-    int y = map->getEndIndex();
+double PathFinding::calcDistance(int x, int y) {
     double temp1, temp2;
     int x1, x2, y1, y2;
     

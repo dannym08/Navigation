@@ -46,7 +46,6 @@ int main(int argc, const char* argv[]) {
     
 
     pf.printPath();
-    cout << "Distance(m) is " << pf.calcDistance() << endl;
     
     
     return 0;
