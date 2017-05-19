@@ -18,13 +18,14 @@ using std::endl;
 ///////////////////////
 
 void PathFinding::reorderHelper(vector<int> &vec) {
-    int index, dis, temp;
+    int index, temp;
+    float dist;
     int endIndex = map->getEndIndex();
-    vector<int> distancesFromEnd;
+    vector<float> distancesFromEnd;
     
     for (int i = 0; i < vec.size(); i++) { // initialize end distance
-        dis = calcDistance(vec[i], endIndex);
-        distancesFromEnd.push_back(dis);
+        dist = calcDistance(vec[i], endIndex); // if you want to changed the way the path is chosen, changed this
+        distancesFromEnd.push_back(dist);
     }
     
     for (int i = 0; i < distancesFromEnd.size(); i++) {
