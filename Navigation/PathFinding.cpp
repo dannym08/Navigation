@@ -17,6 +17,8 @@ using std::endl;
 /* PRIVATE FUNCTIONS */
 ///////////////////////
 
+// reorder helper is a helper funciton that assis the reorder function on reorder the linked list attached to each map spot one by one. The purpose of the reorder function is to change the adjacent around so it favors shorter paths.
+
 void PathFinding::reorderHelper(vector<int> &vec) {
     int index, temp;
     float dist;
@@ -56,6 +58,7 @@ void PathFinding::reorderHelper(vector<int> &vec) {
 /* PUBLIC FUNCTIONS */
 //////////////////////
 
+// constructor that sets the map based on occupancy grid as well as setting the visitied array to false
 PathFinding::PathFinding(int occupancyGrid[], int oneL, int twoL, float resolution){
     map = new Map(oneL, twoL);
     updateMap(occupancyGrid);
@@ -85,8 +88,9 @@ void PathFinding::reorder() {
 
 /*
     Make sure current and end index are both set.
-    The path knows its down once it tries to pop off the intial starting index.
+    The path knows its done once it tries to pop off from the stack but the stack in empty.
  */
+,
 bool PathFinding::findPath() {
     bool pathFound = false; // if path is found or not
     bool next;

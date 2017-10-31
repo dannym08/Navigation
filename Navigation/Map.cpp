@@ -33,8 +33,8 @@ using std::cout;
 //}
 
 // assumes oneDLength is set
-// assumes length is above 9
-// Function creates oneDLength ammount of linked lists all with one node in it being the first node (node on the map)
+// assumes length is above 9 (one dimesonal length so a 3x3)
+// Function creates oneDLength ammount of linked lists all with only one node, that node being the first node (aka node on the map)
 void Map::initialize(vector<mapObject> vec) {
     Node* n;
     LinkedList* linked;
@@ -53,8 +53,11 @@ void Map::initialize(vector<mapObject> vec) {
     }
 }
 
-// call after emptyInitialize
-// has 9 different casses
+/* 
+ -Call after emptyInitialize
+ -Links the map nodes to all the possible nodes it can reach around it (ASSUMES MAP IS PERFECT SQUARE IF NOT CHANGE WHAT NEEDS TO BE CHANGED)
+ -Has 9 different casses (4 corners of the square, top & bottem most line, Left and right most collum, and the rest of the center nodes
+ */
 void Map::emptyLink() {
     Node* a;
     Node* b;
@@ -127,6 +130,7 @@ void Map::emptyLink() {
 /* PUBLIC FUNCTION */
 /////////////////////
 
+// Simple constructor that sets the variables, initializes with empty vector(meaning all slots on the map are free), and calling empty link to link the possible moves for each map slot
 Map::Map(int oLength, int tLength) {
     oneDLength = oLength;
     twoDLength = tLength;
@@ -136,6 +140,8 @@ Map::Map(int oLength, int tLength) {
 }
 
 // wallCutoff is set in global constants (change that in that file)
+// checks the occupancy grid (which is from the mapping package) and updates each map slot based on the occupancy grid
+// This should be called at the frequency you
 void Map::updateMap(int occupancyGrid[]) {
     
     for (int i = 0; i < oneDLength; i++) {
@@ -150,6 +156,7 @@ void Map::updateMap(int occupancyGrid[]) {
     }
 }
 
+// returns a vector of the spots on the map adjacent to the passed in index
 vector<int> Map::getAdjPaths(int index) {
     vector<int> vec;
     Node* node = map[index]->headPtr;
@@ -168,7 +175,7 @@ vector<int> Map::getAdjPaths(int index) {
     return vec;
 }
 
-// erase & set adj path
+// erase & set passed in vector as the adj path for the passed in index
 void Map::eraseAdjPaths(int index, vector<int> vec) {
     map[index]->clear();
     

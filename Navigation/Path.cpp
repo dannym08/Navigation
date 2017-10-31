@@ -3,14 +3,15 @@
 //  Navigation
 //
 //  Created by Danny  on 4/14/17.
-//  Copyright © 2017 Danny . All rights reserved.
-//
 
 #include "Path.hpp"
 #include <iostream>
 
 using std::cout;
 using std::endl;
+
+// The path class is an object that represents the and keeps track of the path the navigation says to take
+
 
 Path::Path() {
     itemCount = 0;

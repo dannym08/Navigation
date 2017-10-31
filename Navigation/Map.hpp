@@ -3,9 +3,9 @@
 //  Navigation
 //
 //  Created by Danny  on 4/11/17.
-//  Copyright © 2017 Danny . All rights reserved.
-//
 
+
+// **DESTRUCTORS MIGHT NEED TO BE WRITTEN**
 #ifndef Map_hpp
 #define Map_hpp
 
@@ -15,6 +15,7 @@
 #include <iostream>
 
 using std::vector;
+
 
 struct Node {
     Node* next;
@@ -51,7 +52,6 @@ struct Node {
     int getIndex() {
         return index;
     }
-    //write deconstructor?
 };
 
 struct LinkedList {

@@ -3,9 +3,11 @@
 //  Navigation
 //
 //  Created by Danny  on 4/11/17.
-//  Copyright © 2017 Danny . All rights reserved.
-//
 
+
+/* 
+    Example use of the navigation package. It will make a map thats twoDLength by twoDLength and it sets the starting index with the function setCurrentIndex and sets the end with setEnd. Then it will find a path and display that index on the map it prints out.
+*/
 #include <iostream> // for testing and printing to terminal
 #include "map.hpp"
 #include "path.hpp"
@@ -26,13 +28,13 @@ int main(int argc, const char* argv[]) {
     int occupancyGrid[oneDLength];
     
     int r = 0;
-    for (int i = 0; i < oneDLength; i++){
+    for (int i = 0; i < oneDLength; i++){ // function that randimizes the percent there is a wall for each map slot
         r = rand() % 100;
         //cout << i << " : " << r << endl;
         
         occupancyGrid[i] = r;
     }
-    //occupancyGrid[11] = 100; // wall
+    
     
     PathFinding pf(occupancyGrid, oneDLength, twoDLength, resolution);
     
@@ -40,7 +42,7 @@ int main(int argc, const char* argv[]) {
     pf.setEnd(210);
     pf.printIndex();
     pf.findPath();
-    //pf.setPathOnMap();
+    pf.setPathOnMap(); // sets the map objects to path objet on the map it prints out on the terminal
     pf.printMap();
     
     
